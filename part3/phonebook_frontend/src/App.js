@@ -141,7 +141,7 @@ function App() {
           })
           .catch(err => {
             setServerStatus(true)
-            setMessage(`${duplicates[0].name}'s record was deleted from the server!`)
+            setMessage(`Record for ${duplicates[0].name} is already deleted from server!`)
             setTimeout(() => {
               setMessage(null)
               setServerStatus(false)
@@ -156,6 +156,14 @@ function App() {
 
             setMessage(`Successfully added ${data.name} to the phonebook!`)
             setTimeout(() => setMessage(null), 5000)
+          })
+          .catch(err => {
+            setServerStatus(true)
+            setMessage("Enter a vaild name and number!")
+            setTimeout(() => {
+              setMessage(null)
+              setServerStatus(false)
+            }, 5000)
           })
 
       setNewRecord({ name: "", number: ""})
