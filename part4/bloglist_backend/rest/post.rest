@@ -1,0 +1,66 @@
+POST http://localhost:3001/api/blogs HTTP/1.1
+Content-Type: application/json
+
+{
+    "title": "Sammy's crunchy hashbrown recipe",
+    "author": "Sammy Hoofner",
+    "url": "https://sammyscorner.com/yum/hashbrown",
+    "likes": 57,
+    "user": "61fe40d62f040dcc5e7319f9"
+}
+
+###
+POST http://localhost:3001/api/blogs HTTP/1.1
+Content-Type: application/json
+
+{
+    "title": "How to cure crippling depression",
+    "author": "Dr. Havnar Snowstorm",
+    "url": "https://mentalfaculty.com/depression/cure",
+    "likes": 149
+}
+
+###
+POST http://localhost:3001/api/blogs HTTP/1.1
+Content-Type: application/json
+
+{
+    "title": "How to sneak snacks into a cinema",
+    "author": "Brinda Sanders",
+    "url": "https://millenialneighbor.com/lifehacks/12974483",
+    "likes": 735,
+    "user": "61fe40e42f040dcc5e7319fd"
+}
+
+###
+POST http://localhost:3001/api/users HTTP/1.1
+Content-Type: application/json
+
+{
+    "username": "brAndy",
+    "firstName": "Andy",
+    "lastName": "Walters",
+    "password": "13579",
+    "blogs": []
+}
+
+###
+POST http://localhost:3001/api/users HTTP/1.1
+Content-Type: application/json
+
+{
+    "username": "chimp_shaver",
+    "firstName": "Brandon",
+    "lastName": "Pikman",
+    "password": "password",
+    "blogs": []
+}
+
+###
+POST http://localhost:3001/api/login HTTP/1.1
+Content-Type: application/json
+
+{
+    "username": "brAndy",
+    "password": "13579"
+}

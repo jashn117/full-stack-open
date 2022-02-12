@@ -1,0 +1,13 @@
+GET http://localhost:3001/api/blogs HTTP/1.1
+
+###
+GET http://localhost:3001/api/blogs/61fe7c9da702b1bf7febdced HTTP/1.1
+
+###
+GET http://localhost:3001/ HTTP/1.1
+
+###
+GET http://localhost:3001/api/idktp HTTP/1.1
+
+###
+GET http://localhost:3001/api/users HTTP/1.1
