@@ -382,13 +382,15 @@ describe('API', () => {
 
   describe('DELETE requests to /api/blogs', () => {
     test('responds with code 204 and removes the expected blog given a valid ID', async () => {
-      const blogs = await helper.getAllBlogsFromDB();
+      const blogs = await helper
+        .getAllBlogsFromDB();
       const initialLength = blogs.length;
-      const { id } = blogs[0];
+      const id = await helper
+        .getValidBlogID();
 
       const userInfo = {
-        username: helper.someUsers[0].username,
-        password: helper.someUsers[0].password,
+        username: helper.someUsers[1].username,
+        password: helper.someUsers[1].password,
       };
 
       const res = await api
@@ -400,7 +402,8 @@ describe('API', () => {
         .set('Authorization', `Bearer ${res.body.token}`)
         .expect(204);
 
-      const blogsAfterDelete = await helper.getAllBlogsFromDB();
+      const blogsAfterDelete = await helper
+        .getAllBlogsFromDB();
 
       expect(blogsAfterDelete)
         .toHaveLength(initialLength - 1);
@@ -411,13 +414,15 @@ describe('API', () => {
     });
 
     test('responds with code 204 and makes no changes given an invalid ID', async () => {
-      const blogs = await helper.getAllBlogsFromDB();
+      const blogs = await helper
+        .getAllBlogsFromDB();
       const initialLength = blogs.length;
-      const id = await helper.getInvalidBlogID();
+      const id = await helper
+        .getInvalidBlogID();
 
       const userInfo = {
-        username: helper.someUsers[0].username,
-        password: helper.someUsers[0].password,
+        username: helper.someUsers[1].username,
+        password: helper.someUsers[1].password,
       };
 
       const res = await api
@@ -439,7 +444,8 @@ describe('API', () => {
 
   describe('Misc', () => {
     test('all blogs have the unique id property', async () => {
-      const blogs = await helper.getAllBlogsFromDB();
+      const blogs = await helper
+        .getAllBlogsFromDB();
 
       blogs.forEach((blog) => {
         expect(blog.id)

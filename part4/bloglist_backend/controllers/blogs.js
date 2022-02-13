@@ -90,11 +90,14 @@ Router.put('/:id', async (req, res) => {
 
 Router.delete('/:id', middleware.tokenExtractor, middleware.extractUser, async (req, res) => {
   const { user } = req;
-  const expectedUser = await Blog
-    .findById(req.params.id)
-    .user;
+  const blogToBeDeleted = await Blog
+    .findById(req.params.id);
 
-  if (user && user._id.toString() === expectedUser.toString()) {
+  if (!blogToBeDeleted) {
+    res
+      .status(204)
+      .end();
+  } else if (user && user._id.toString() === blogToBeDeleted.user.toString()) {
     await Blog
       .findByIdAndDelete(req.params.id);
 
