@@ -12,9 +12,9 @@ const warn = (...params) => {
 };
 
 const error = (...params) => {
-  if (process.env.NODE_ENV !== 'test') {
-    console.error('ERROR: ', ...params);
-  }
+  // if (process.env.NODE_ENV !== 'test') {
+  console.error('ERROR: ', ...params);
+  // }
 };
 
 module.exports = {
